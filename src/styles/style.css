@@ -1,0 +1,66 @@
+:root {
+  --storm: #222c3c;
+  --soft-storm: hsl(217, 28%, 65%);
+  --light-storm: hsl(217, 28%, 75%);
+  --lighter-storm: hsl(217, 28%, 80%);
+  --jean: #999ea7;
+  --light-jean: hsl(219, 7%, 88%);
+  --honey: #d8b26e;
+  --light-honey: hsl(38, 58%, 84%);
+  --nude: #b69b7d;
+  --light-nude: hsl(32, 27%, 80%);
+  --cream: #e2e0d5;
+  --light-cream: hsl(51, 18%, 92%);
+}
+
+body {
+  background-color: var(--light-cream);
+}
+
+.App {
+  margin: 5%;
+  padding: 1%;
+  background-color: var(--light-jean);
+}
+
+input:focus {
+  outline: none;
+}
+
+.personal-section, .educational-section, .profesional-section {
+  background-color: var(--lighter-storm);
+  padding: 1%;
+  border: solid var(--lighter-storm) 2px;
+}
+
+.personal-section:hover, .educational-section:hover, .profesional-section:hover {
+  border-color: var(--soft-storm);
+}
+
+.editing {
+  background-color: var(--light-storm);
+  border-color: var(--light-storm);
+}
+
+.editing:hover {
+  border-color: var(--light-storm);
+}
+
+.educational-section {
+  margin: 1% 0;
+}
+
+.personal-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.personal-info p {
+  height: 1em;
+  width: 15%;
+}
+
+.experience p {
+  height: 1em;
+  width: 15%;
+}
