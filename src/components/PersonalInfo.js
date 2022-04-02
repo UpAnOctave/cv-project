@@ -17,7 +17,7 @@ class PersonalInfo extends Component {
       return (
         <div className="personal-info">
           <h2>{this.props.title}:</h2>
-          <input value={this.state.text} onChange={this.handleChange} />
+          <input className="header-input" value={this.state.text} onChange={this.handleChange} />
         </div>
       );
     }

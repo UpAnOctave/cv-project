@@ -55,8 +55,8 @@ class ProfesionalSection extends Component {
       <div className={`profesional-section ${this.state.isEditing ? "editing" : ""}`} onClick={this.edit}>
         <h1>PROFESIONAL EXPERIENCE</h1>
         {list}
-        <button onClick={this.addExperience} hidden={this.state.isButtonHidden}>ADD EXPERIENCE</button>
-        <button onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
+        <button className="add-experience-button" onClick={this.addExperience} hidden={this.state.isButtonHidden}>ADD EXPERIENCE</button>
+        <button className="ok-button" onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
       </div>
     );
   }

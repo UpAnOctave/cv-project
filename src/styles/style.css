@@ -15,22 +15,63 @@
 
 body {
   background-color: var(--light-cream);
+  font-family: Arial, sans-serif;
+  font-size: 18pt;
+  color: var(--storm);
 }
 
 .App {
   margin: 5%;
-  padding: 1%;
+  padding: 3%;
   background-color: var(--light-jean);
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2.5em;
+  margin-bottom: 1%;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 1%;
+}
+
+input {
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  height: 1em;
+  width: auto;
+  border: none;
+  background-color: var(--soft-storm);
+  padding: 0;
 }
 
 input:focus {
   outline: none;
 }
 
+.header-input {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.paragraph-input {
+  margin-top: 1%;
+}
+
+.personal-section input {
+  font-weight: normal;
+  margin-left: 1%;
+  font-size: 1.3em;
+}
+
 .personal-section, .educational-section, .profesional-section {
   background-color: var(--lighter-storm);
-  padding: 1%;
-  border: solid var(--lighter-storm) 2px;
+  padding: 2%;
+  border: solid var(--lighter-storm) 5px;
+  position: relative;
 }
 
 .personal-section:hover, .educational-section:hover, .profesional-section:hover {
@@ -47,20 +88,61 @@ input:focus {
 }
 
 .educational-section {
-  margin: 1% 0;
+  margin: 3% 0;
 }
 
 .personal-info {
   display: flex;
   flex-direction: row;
+  align-items: baseline;
+  margin: 1% 0;
 }
 
 .personal-info p {
-  height: 1em;
-  width: 15%;
+  margin-left: 1%;
+  font-size: 1.3em;
+}
+
+.experience {
+  margin-top: 3%;
+  position: relative;
 }
 
 .experience p {
   height: 1em;
-  width: 15%;
+  margin-top: 1%;
+}
+
+button {
+  color: var(--storm);
+  border: solid var(--storm) 5px;
+  border-radius: 10px;
+  padding: 0.5%;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  background: none;
+}
+
+button:hover {
+  background-color: var(--storm);
+  color: var(--lighter-storm);
+}
+
+.ok-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.add-experience-button {
+  margin-top: 2.5%;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 6%;
+  font-size: 1em;
+  padding: 0.25%;
 }

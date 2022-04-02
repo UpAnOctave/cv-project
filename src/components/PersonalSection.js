@@ -35,7 +35,7 @@ class PersonalSection extends Component {
         <PersonalInfo title="Name" isEditing={this.state.isEditing} />
         <PersonalInfo title="E-mail" isEditing={this.state.isEditing} />
         <PersonalInfo title="Phone number" isEditing={this.state.isEditing} />
-        <button onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
+        <button className="ok-button" onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
       </div>
     );
   }

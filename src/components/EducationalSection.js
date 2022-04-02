@@ -55,8 +55,8 @@ class EducationalSection extends Component {
       <div className={`educational-section ${this.state.isEditing ? "editing" : ""}`} onClick={this.edit}>
         <h1>EDUCATIONAL EXPERIENCE</h1>
         {list}
-        <button onClick={this.addExperience} hidden={this.state.isButtonHidden}>ADD EXPERIENCE</button>
-        <button onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
+        <button className="add-experience-button" onClick={this.addExperience} hidden={this.state.isButtonHidden}>ADD EXPERIENCE</button>
+        <button className="ok-button" onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
       </div>
     );
   }

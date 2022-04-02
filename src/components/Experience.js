@@ -16,7 +16,7 @@ class Experience extends Component {
   }
 
   handleEstablishmentChange(event) {
-    this.setState({establishment: event.target.value});
+    this.setState({establishment: event.target.value.toUpperCase()});
   }
 
   handleTitleChange(event) {
@@ -35,25 +35,25 @@ class Experience extends Component {
     if(this.props.isEditing) {
       return (
         <div className="experience">
-          <input value={this.state.establishment} placeholder="Establishment" onChange={this.handleEstablishmentChange} />
+          <input className="header-input" value={this.state.establishment} placeholder="ESTABLISHMENT" onChange={this.handleEstablishmentChange} />
           <div>
             <input value={this.state.title} placeholder="Title/Position" onChange={this.handleTitleChange} />
-            |
+             | 
             <input value={this.state.date} placeholder="Date" onChange={this.handleDateChange} />
           </div>
-          <input value={this.state.description} placeholder="Description" onChange={this.handleDescriptionChange} />
-          <button id={this.props.id} onClick={this.props.deleteExperience}>DELETE</button>
+          <input className="paragraph-input" value={this.state.description} placeholder="Description" onChange={this.handleDescriptionChange} />
+          <button id={this.props.id} className="delete-button" onClick={this.props.deleteExperience}>DELETE</button>
         </div>
       );
     }
     else {
       return (
         <div className="experience">
-          <h2>{this.state.establishment}</h2>
+          <h2>{this.state.establishment || "ESTABLISHMENT"}</h2>
           <div>
-            <h3>{this.state.title}|{this.state.date}</h3>
+            <h3>{this.state.title || "Title/Position"} | {this.state.date || "Date"}</h3>
           </div>
-          <p>{this.state.description}</p>
+          <p>{this.state.description || "Description"}</p>
         </div>
       );
     }
