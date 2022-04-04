@@ -1,34 +1,27 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class PersonalInfo extends Component {
-  constructor(props) {
-    super(props);
+const PersonalInfo = function(props) {
+  const [text, setText] = useState('');
 
-    this.state = {text: ''};
-    this.handleChange = this.handleChange.bind(this);
+  const handleChange = function(event) {
+    setText(event.target.value);
   }
 
-  handleChange(event) {
-    this.setState({text: event.target.value});
+  if(props.isEditing) {
+    return (
+      <div className="personal-info">
+        <h2>{props.title}:</h2>
+        <input className="header-input" value={text} onChange={handleChange} />
+      </div>
+    );
   }
-
-  render() {
-    if(this.props.isEditing) {
-      return (
-        <div className="personal-info">
-          <h2>{this.props.title}:</h2>
-          <input className="header-input" value={this.state.text} onChange={this.handleChange} />
-        </div>
-      );
-    }
-    else {
-      return (
-        <div className="personal-info">
-          <h2>{this.props.title}:</h2>
-          <p>{this.state.text}</p>
-        </div>
-      );
-    }
+  else {
+    return (
+      <div className="personal-info">
+        <h2>{props.title}:</h2>
+        <p>{text}</p>
+      </div>
+    );
   }
 }
 

@@ -1,44 +1,30 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 
-class PersonalSection extends Component {
-  constructor(props) {
-    super(props);
+const PersonalSection = function(props) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isButtonHidden, setIsButtonHidden] = useState(true);
 
-    this.state = {
-      isEditing: false,
-      isButtonHidden: true
-    };
-    this.edit = this.edit.bind(this);
-    this.submit = this.submit.bind(this);
+  const edit = function() {
+    setIsEditing(true);
+    setIsButtonHidden(false);
   }
 
-  edit() {
-    this.setState({
-      isEditing: true,
-      isButtonHidden: false
-    });
-  }
-
-  submit(event) {
-    this.setState({
-      isEditing: false,
-      isButtonHidden: true
-    });
+  const submit = function(event) {
+    setIsEditing(false);
+    setIsButtonHidden(true);
     event.stopPropagation();
   }
 
-  render() {
-    return (
-      <div className={`personal-section ${this.state.isEditing ? "editing" : ""}`} onClick={this.edit}>
-        <h1>PERSONAL INFORMATION</h1>
-        <PersonalInfo title="Name" isEditing={this.state.isEditing} />
-        <PersonalInfo title="E-mail" isEditing={this.state.isEditing} />
-        <PersonalInfo title="Phone number" isEditing={this.state.isEditing} />
-        <button className="ok-button" onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
-      </div>
-    );
-  }
+  return (
+    <div className={`personal-section ${isEditing ? "editing" : ""}`} onClick={edit}>
+      <h1>PERSONAL INFORMATION</h1>
+      <PersonalInfo title="Name" isEditing={isEditing} />
+      <PersonalInfo title="E-mail" isEditing={isEditing} />
+      <PersonalInfo title="Phone number" isEditing={isEditing} />
+      <button className="ok-button" onClick={submit} hidden={isButtonHidden}>OK</button>
+    </div>
+  );
 }
 
 export default PersonalSection;

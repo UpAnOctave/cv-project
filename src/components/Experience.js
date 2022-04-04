@@ -1,62 +1,51 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Experience extends Component {
-  constructor(props) {
-    super(props);
+const Experience = function(props) {
+  const [establishment, setEstablishment] = useState('');
+  const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
+  const [description, setDescription] = useState('');
 
-    this.state = {
-      establishment: '',
-      title: '',
-      description: ''
-    };
-    this.handleEstablishmentChange = this.handleEstablishmentChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+  const handleEstablishmentChange = function(event) {
+    setEstablishment(event.target.value.toUpperCase());
   }
 
-  handleEstablishmentChange(event) {
-    this.setState({establishment: event.target.value.toUpperCase()});
+  const handleTitleChange = function(event) {
+    setTitle(event.target.value);
   }
 
-  handleTitleChange(event) {
-    this.setState({title: event.target.value});
+  const handleDateChange = function(event) {
+    setDate(event.target.value);
   }
 
-  handleDateChange(event) {
-    this.setState({date: event.target.value});
+  const handleDescriptionChange = function(event) {
+    setDescription(event.target.value);
   }
 
-  handleDescriptionChange(event) {
-    this.setState({description: event.target.value});
-  }
-
-  render() {
-    if(this.props.isEditing) {
-      return (
-        <div className="experience">
-          <input className="header-input" value={this.state.establishment} placeholder="ESTABLISHMENT" onChange={this.handleEstablishmentChange} />
-          <div>
-            <input value={this.state.title} placeholder="Title/Position" onChange={this.handleTitleChange} />
-             | 
-            <input value={this.state.date} placeholder="Date" onChange={this.handleDateChange} />
-          </div>
-          <input className="paragraph-input" value={this.state.description} placeholder="Description" onChange={this.handleDescriptionChange} />
-          <button id={this.props.id} className="delete-button" onClick={this.props.deleteExperience}>DELETE</button>
+  if(props.isEditing) {
+    return (
+      <div className="experience">
+        <input className="header-input" value={establishment} placeholder="ESTABLISHMENT" onChange={handleEstablishmentChange} />
+        <div>
+          <input value={title} placeholder="Title/Position" onChange={handleTitleChange} />
+            | 
+          <input value={date} placeholder="Date" onChange={handleDateChange} />
         </div>
-      );
-    }
-    else {
-      return (
-        <div className="experience">
-          <h2>{this.state.establishment || "ESTABLISHMENT"}</h2>
-          <div>
-            <h3>{this.state.title || "Title/Position"} | {this.state.date || "Date"}</h3>
-          </div>
-          <p>{this.state.description || "Description"}</p>
+        <input className="paragraph-input" value={description} placeholder="Description" onChange={handleDescriptionChange} />
+        <button id={props.id} className="delete-button" onClick={props.deleteExperience}>DELETE</button>
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="experience">
+        <h2>{establishment || "ESTABLISHMENT"}</h2>
+        <div>
+          <h3>{title || "Title/Position"} | {date || "Date"}</h3>
         </div>
-      );
-    }
+        <p>{description || "Description"}</p>
+      </div>
+    );
   }
 }
 

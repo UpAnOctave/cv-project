@@ -1,65 +1,47 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Experience from "./Experience";
 import uniqid from "uniqid";
 
-class EducationalSection extends Component {
-  constructor(props) {
-    super(props);
+const EducationalSection = function(props) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isButtonHidden, setIsButtonHidden] = useState(true);
+  const [experience, setExperience] = useState([]);
 
-    this.state = {
-      isEditing: false,
-      isButtonHidden: true,
-      experience: []
-    };
-    this.edit = this.edit.bind(this);
-    this.submit = this.submit.bind(this);
-    this.addExperience = this.addExperience.bind(this);
-    this.deleteExperience = this.deleteExperience.bind(this);
+  const edit = function() {
+      setIsEditing(true);
+      setIsButtonHidden(false);
   }
 
-  edit() {
-    this.setState({
-      isEditing: true,
-      isButtonHidden: false
-    });
-  }
-
-  submit(event) {
-    this.setState({
-      isEditing: false,
-      isButtonHidden: true
-    });
+  const submit = function(event) {
+    setIsEditing(false);
+    setIsButtonHidden(true);
     event.stopPropagation();
   }
 
-  addExperience() {
-    this.setState(function(state) {
-      return {experience: [...state.experience, uniqid()]};
-    });
+  const addExperience = function() {
+    setExperience([...experience, uniqid()]);
   }
 
-  deleteExperience(event) {
-    this.setState(function(state) {
-      const newList = state.experience.filter(function(id) {
+  const deleteExperience = function(event) {
+      const newList = experience.filter(function(id) {
         return (id !== event.target.id);
       });
-      return {experience: newList};
-    });
+
+      setExperience(newList);
   }
 
-  render() {
-    const list = this.state.experience.map(function(id) {
-      return <Experience key={id} id={id} isEditing={this.state.isEditing} deleteExperience={this.deleteExperience} />;
-    }.bind(this));
-    return (
-      <div className={`educational-section ${this.state.isEditing ? "editing" : ""}`} onClick={this.edit}>
-        <h1>EDUCATIONAL EXPERIENCE</h1>
-        {list}
-        <button className="add-experience-button" onClick={this.addExperience} hidden={this.state.isButtonHidden}>ADD EXPERIENCE</button>
-        <button className="ok-button" onClick={this.submit} hidden={this.state.isButtonHidden}>OK</button>
-      </div>
-    );
-  }
+  const list = experience.map(function(id) {
+    return <Experience key={id} id={id} isEditing={isEditing} deleteExperience={deleteExperience} />;
+  });
+
+  return (
+    <div className={`educational-section ${isEditing ? "editing" : ""}`} onClick={edit}>
+      <h1>EDUCATIONAL EXPERIENCE</h1>
+      {list}
+      <button className="add-experience-button" onClick={addExperience} hidden={isButtonHidden}>ADD EXPERIENCE</button>
+      <button className="ok-button" onClick={submit} hidden={isButtonHidden}>OK</button>
+    </div>
+  );
 }
 
 export default EducationalSection;
